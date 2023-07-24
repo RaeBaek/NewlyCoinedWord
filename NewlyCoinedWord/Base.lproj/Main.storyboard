@@ -250,59 +250,72 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aWc-PU-mug">
-                                <rect key="frame" x="20" y="139" width="315" height="35"/>
+                                <rect key="frame" x="20" y="139" width="155" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aN2-59-9GB">
-                                        <rect key="frame" x="0.0" y="0.0" width="75" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="B"/>
                                         <connections>
                                             <action selector="recommendWordButtonTapped:" destination="iAl-Hy-XD7" eventType="touchUpInside" id="fCb-yg-AM3"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYH-dN-Xhv">
-                                        <rect key="frame" x="80" y="0.0" width="75" height="35"/>
+                                        <rect key="frame" x="40" y="0.0" width="35" height="30"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="B"/>
                                         <connections>
                                             <action selector="recommendWordButtonTapped:" destination="iAl-Hy-XD7" eventType="touchUpInside" id="cp7-WE-mFJ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJF-VM-llJ">
-                                        <rect key="frame" x="160" y="0.0" width="75" height="35"/>
+                                        <rect key="frame" x="80" y="0.0" width="35" height="30"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="B"/>
                                         <connections>
                                             <action selector="recommendWordButtonTapped:" destination="iAl-Hy-XD7" eventType="touchUpInside" id="Kby-Z3-wP9"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ke-rb-8lK">
-                                        <rect key="frame" x="240" y="0.0" width="75" height="35"/>
+                                        <rect key="frame" x="120" y="0.0" width="35" height="30"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="B"/>
                                         <connections>
                                             <action selector="recommendWordButtonTapped:" destination="iAl-Hy-XD7" eventType="touchUpInside" id="dDi-2y-XBw"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="Y6M-r4-f3Y"/>
+                                    <constraint firstAttribute="height" constant="30" id="Y6M-r4-f3Y"/>
                                 </constraints>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JzN-Sz-NUE">
-                                <rect key="frame" x="20" y="194" width="353" height="604"/>
+                                <rect key="frame" x="20" y="189" width="353" height="609"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCl-x0-JCD">
-                                <rect key="frame" x="50" y="484" width="293" height="24"/>
+                                <rect key="frame" x="50" y="481.66666666666669" width="293" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xb6-7Q-Tjp">
+                                <rect key="frame" x="304.66666666666669" y="139" width="68.333333333333314" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JOb-68-4XB"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="재검색"/>
+                                <connections>
+                                    <action selector="resetButtonTapped:" destination="iAl-Hy-XD7" eventType="touchUpInside" id="g5D-5H-Dse"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IRY-wT-WLL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="Xb6-7Q-Tjp" firstAttribute="top" secondItem="MGF-ZE-uUV" secondAttribute="bottom" constant="10" id="0ha-jV-CNz"/>
                             <constraint firstItem="MCl-x0-JCD" firstAttribute="centerY" secondItem="JzN-Sz-NUE" secondAttribute="centerY" id="CSG-cS-0YD"/>
                             <constraint firstItem="IRY-wT-WLL" firstAttribute="trailing" secondItem="MCl-x0-JCD" secondAttribute="trailing" constant="50" id="Gkv-1X-nSO"/>
                             <constraint firstItem="aWc-PU-mug" firstAttribute="top" secondItem="MGF-ZE-uUV" secondAttribute="bottom" constant="10" id="IQz-72-1x7"/>
@@ -313,9 +326,11 @@
                             <constraint firstItem="MGF-ZE-uUV" firstAttribute="top" secondItem="IRY-wT-WLL" secondAttribute="top" constant="20" id="bQi-NQ-Q5Z"/>
                             <constraint firstItem="JzN-Sz-NUE" firstAttribute="leading" secondItem="IRY-wT-WLL" secondAttribute="leading" constant="20" id="c3W-f6-5Jl"/>
                             <constraint firstItem="aWc-PU-mug" firstAttribute="leading" secondItem="IRY-wT-WLL" secondAttribute="leading" constant="20" id="epA-zK-4ff"/>
+                            <constraint firstItem="IRY-wT-WLL" firstAttribute="trailing" secondItem="Xb6-7Q-Tjp" secondAttribute="trailing" constant="20" id="hLB-WG-nZK"/>
                             <constraint firstItem="IRY-wT-WLL" firstAttribute="trailing" secondItem="MGF-ZE-uUV" secondAttribute="trailing" constant="20" id="ly0-r8-VEP"/>
                             <constraint firstItem="JzN-Sz-NUE" firstAttribute="top" secondItem="aWc-PU-mug" secondAttribute="bottom" constant="20" id="mMj-Tw-Nkf"/>
                             <constraint firstItem="IRY-wT-WLL" firstAttribute="bottom" secondItem="JzN-Sz-NUE" secondAttribute="bottom" constant="20" id="pKa-fD-yZU"/>
+                            <constraint firstItem="JzN-Sz-NUE" firstAttribute="top" secondItem="Xb6-7Q-Tjp" secondAttribute="bottom" constant="20" id="zeO-aZ-m1r"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="yln-wD-s7e" appends="YES" id="DqM-QW-dIF"/>
@@ -323,6 +338,7 @@
                     </view>
                     <connections>
                         <outlet property="backgroundImageView" destination="JzN-Sz-NUE" id="pp2-kc-QFy"/>
+                        <outlet property="recommendWordsResetButton" destination="Xb6-7Q-Tjp" id="3ae-F1-RPh"/>
                         <outlet property="resultLabel" destination="MCl-x0-JCD" id="tXT-oB-YUf"/>
                         <outlet property="searchButton" destination="5Ck-v3-Y78" id="LQF-Ve-HaS"/>
                         <outlet property="wordTextField" destination="fde-4z-B4G" id="NdQ-NT-qj2"/>

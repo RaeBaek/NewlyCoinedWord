@@ -8,12 +8,14 @@
 import UIKit
 
 class WordViewController: UIViewController {
-
+    
     @IBOutlet var wordTextField: UITextField!
     @IBOutlet var searchButton: UIButton!
     @IBOutlet var backgroundImageView: UIImageView!
     
     @IBOutlet var recommendWordButtons: [UIButton]!
+    
+    @IBOutlet var recommendWordsResetButton: UIButton!
     
     @IBOutlet var resultLabel: UILabel!
     
@@ -38,7 +40,7 @@ class WordViewController: UIViewController {
         
         designTextField()
         designSearchButton()
-        designRecommandWords()
+        designResearchButton()
         designBackgroundImage()
         designResultLabel()
         randomRecommandWords()
@@ -46,11 +48,11 @@ class WordViewController: UIViewController {
     }
     
     @IBAction func textFieldReturnButtonTapped(_ sender: UITextField) {
-        searchNewlyCoindWord(newlyWord: sender.text ?? "")
+        searchNewlyCoindWord(newlyWord: sender.text)
     }
     
     @IBAction func searchButtonTapped(_ sender: UIButton) {
-        searchNewlyCoindWord(newlyWord: wordTextField.text ?? "")
+        searchNewlyCoindWord(newlyWord: wordTextField.text)
     }
     
     @IBAction func tapGestrueTapped(_ sender: UITapGestureRecognizer) {
@@ -59,16 +61,45 @@ class WordViewController: UIViewController {
     
     @IBAction func recommendWordButtonTapped(_ sender: UIButton) {
         wordTextField.text = sender.currentTitle
-        searchNewlyCoindWord(newlyWord: wordTextField.text ?? "")
+        searchNewlyCoindWord(newlyWord: wordTextField.text)
     }
     
-    func searchNewlyCoindWord(newlyWord word: String) {
-        let warnning = "결과를 찾을 수 없습니다.\n다시 입력해주세요."
-        let word = word.uppercased()
-        if wordArray.contains(word) {
-            resultLabel.text = "'\(word)'은(는)\n '\(wordDictionary[word] ?? warnning)'의 줄임말입니다."
-        } else {
-            resultLabel.text = warnning
+    @IBAction func resetButtonTapped(_ sender: UIButton) {
+        randomRecommandWords()
+        
+    }
+    
+    // 빈칸과 nil을 검색어로 받았을 때 보여주는 경고 알림 창 함수
+    func warningAlert() {
+        let alert = UIAlertController(title: "주의하세요!", message: "검색어를 입력 후 검색해주세요!", preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "확인", style: .default)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true)
+    }
+    
+    // 검색어를 받아 3가지 경우의 수로 비교하는 함수
+    // 1. word가 nil 또는 ""(빈칸)인가
+    // 2. word가 검색어에 포함되어 있는가
+    // 3. word가 검색어에 포함되어 있지 않은가
+    func searchNewlyCoindWord(newlyWord word: String?) {
+        let warnning = "결과를 찾을 수 없습니다.\n검색어를 다시 입력해주세요."
+        
+        if let word {
+            if word == nil || word.count <= 1 {
+                warningAlert()
+            } else {
+                let word = word.uppercased()
+                if wordArray.contains(word) {
+                    resultLabel.text = "'\(word)'은(는)\n '\(wordDictionary[word] ?? warnning)'의 줄임말입니다."
+                } else {
+                    resultLabel.text = warnning
+                }
+            }
         }
         view.endEditing(true)
     }
@@ -87,14 +118,20 @@ class WordViewController: UIViewController {
         searchButton.layer.borderWidth = 2
     }
     
-    func designRecommandWords() {
-        for i in 0..<recommendWordButtons.count {
-            recommendWordButtons[i].titleLabel?.font = .systemFont(ofSize: 15)
-            recommendWordButtons[i].tintColor = .black
-            recommendWordButtons[i].layer.borderColor = UIColor.black.cgColor
-            recommendWordButtons[i].layer.borderWidth = 1
-            recommendWordButtons[i].layer.cornerRadius = 10
-        }
+    // 검색 추천어를 재검색해주는 재검색 버튼 UI 구성 함수
+    func designResearchButton() {
+        let attributedTitle = NSAttributedString(
+            string: "재검색",
+            attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .regular),
+                         NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        recommendWordsResetButton.backgroundColor = .black
+        recommendWordsResetButton.tintColor = .white
+        recommendWordsResetButton.layer.borderColor = UIColor.black.cgColor
+        recommendWordsResetButton.layer.borderWidth = 1
+        recommendWordsResetButton.layer.cornerRadius = 10
+        
+        recommendWordsResetButton.setAttributedTitle(attributedTitle, for: .normal)
     }
     
     func designBackgroundImage() {
@@ -104,15 +141,36 @@ class WordViewController: UIViewController {
     
     func designResultLabel() {
         resultLabel.text = "줄임말을 입력하고 \n검색버튼을 눌러주세요."
-        resultLabel.font = .systemFont(ofSize: 17)
+        resultLabel.font = .systemFont(ofSize: 17, weight: .regular)
         resultLabel.textColor = .black
     }
     
+    // 추천 검색어를 고정된 갯수인 4개 씩 추천해주되
+    // 중복되지 않게 추천해주고
+    // 추천 검색어 가장 우측에 검색어 재검색 버튼 추가
     func randomRecommandWords() {
+        var wordArray = wordArray
+        
         for i in 0..<recommendWordButtons.count {
+            recommendWordButtons[i].tintColor = .black
+            recommendWordButtons[i].layer.borderColor = UIColor.black.cgColor
+            recommendWordButtons[i].layer.borderWidth = 1
+            recommendWordButtons[i].layer.cornerRadius = 10
+            
             let result = wordArray.randomElement()!
-            print(result)
+            
+            if let index = wordArray.firstIndex(of: result) {
+                wordArray.remove(at: index)
+            }
+            
+            let attributedTitle = NSAttributedString(
+                string: result,
+                attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .regular),
+                             NSAttributedString.Key.foregroundColor: UIColor.black])
+            
             recommendWordButtons[i].setTitle(result, for: .normal)
+            recommendWordButtons[i].setAttributedTitle(attributedTitle, for: .normal)
+            
         }
     }
 }
