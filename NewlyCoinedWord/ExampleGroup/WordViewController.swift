@@ -19,21 +19,24 @@ class WordViewController: UIViewController {
     
     @IBOutlet var resultLabel: UILabel!
     
-    let wordArray = ["얼죽아", "별다줄", "지못미", "케바케", "알잘딱깔센", "단짠단짠", "GOAT", "내로남불", "중꺾마", "무물보", "LOL"]
+    // 기존의 줄임말 배열과 해당 단어에 준하는 뜻을 가진 딕셔너리를
+    // 열거형에 옮겨 접근하는 방식으로 코드를 수정해봄.
     
-    let wordDictionary = [
-        "얼죽아": "얼어 죽어도 아이스 아메리카노",
-        "별다줄": "별거 다 줄이다",
-        "지못미": "지켜주지 못해 미안하다",
-        "케바케": "케이스 바이 케이스",
-        "알잘딱깔센": "알아서 잘 딱 깔끔하고 센스있게",
-        "단짠단짠": "단맛 짠맛 단맛 짠맛",
-        "GOAT": "Greatest Of All Time",
-        "내로남불": "내가 하면 로맨스 남이 하면 불륜",
-        "중꺾마": "중요한건 꺾이지 않는 마음",
-        "무물보": "무엇이든 물어보세요",
-        "LOL": "League Of Legends"
-    ]
+//    let wordArray = ["얼죽아", "별다줄", "지못미", "케바케", "알잘딱깔센", "단짠단짠", "GOAT", "내로남불", "중꺾마", "무물보", "LOL"]
+    
+//    let wordDictionary = [
+//        "얼죽아": "얼어 죽어도 아이스 아메리카노",
+//        "별다줄": "별거 다 줄이다",
+//        "지못미": "지켜주지 못해 미안하다",
+//        "케바케": "케이스 바이 케이스",
+//        "알잘딱깔센": "알아서 잘 딱 깔끔하고 센스있게",
+//        "단짠단짠": "단맛 짠맛 단맛 짠맛",
+//        "GOAT": "Greatest Of All Time",
+//        "내로남불": "내가 하면 로맨스 남이 하면 불륜",
+//        "중꺾마": "중요한건 꺾이지 않는 마음",
+//        "무물보": "무엇이든 물어보세요",
+//        "LOL": "League Of Legends"
+//    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +47,7 @@ class WordViewController: UIViewController {
         designBackgroundImage()
         designResultLabel()
         randomRecommandWords()
+        
         
     }
     
@@ -94,8 +98,10 @@ class WordViewController: UIViewController {
                 warningAlert()
             } else {
                 let word = word.uppercased()
-                if wordArray.contains(word) {
-                    resultLabel.text = "'\(word)'은(는)\n '\(wordDictionary[word] ?? warnning)'의 줄임말입니다."
+                // 텍스트 필드에서 전달받는 검색어를 열거형에 접근하여
+                // 같은 기능을 가능케 하도록 코드를 수정 및 구현
+                if let word = NewlyCoinedWordsEnum(rawValue: word) {
+                    resultLabel.text = "'\(word)'은(는)\n '\(word.mean)'의 줄임말입니다."
                 } else {
                     resultLabel.text = warnning
                 }
@@ -149,7 +155,9 @@ class WordViewController: UIViewController {
     // 중복되지 않게 추천해주고
     // 추천 검색어 가장 우측에 검색어 재검색 버튼 추가
     func randomRecommandWords() {
-        var wordArray = wordArray
+        // 검색어 배열을 다시 받아오는 것이 아닌
+        // 열거형의 기능 .allCases를 이용하여 변수 선언
+        var wordArray = NewlyCoinedWordsEnum.allCases
         
         for i in 0..<recommendWordButtons.count {
             recommendWordButtons[i].tintColor = .black
@@ -164,11 +172,12 @@ class WordViewController: UIViewController {
             }
             
             let attributedTitle = NSAttributedString(
-                string: result,
+                string: result.rawValue,
                 attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .regular),
                              NSAttributedString.Key.foregroundColor: UIColor.black])
-            
-            recommendWordButtons[i].setTitle(result, for: .normal)
+
+            // 열거형의 .rawValue에 접근하여 값을 받아온다.
+            recommendWordButtons[i].setTitle(result.rawValue, for: .normal)
             recommendWordButtons[i].setAttributedTitle(attributedTitle, for: .normal)
             
         }

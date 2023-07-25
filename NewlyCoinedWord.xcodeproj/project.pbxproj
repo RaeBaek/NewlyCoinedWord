@@ -12,6 +12,7 @@
 		145AD6EB2A6A10DE00A6DB3D /* AutoLayoutExample.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 145AD6EA2A6A10DE00A6DB3D /* AutoLayoutExample.storyboard */; };
 		145AD6ED2A6A4B1800A6DB3D /* NewWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145AD6EC2A6A4B1800A6DB3D /* NewWordViewController.swift */; };
 		145AD6EF2A6A8B2500A6DB3D /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145AD6EE2A6A8B2500A6DB3D /* UITextField+.swift */; };
+		148621F52A6FB0B000926CCC /* NewlyCoinedWordsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148621F42A6FB0B000926CCC /* NewlyCoinedWordsEnum.swift */; };
 		14977E3E2A68DAC30013258A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14977E3D2A68DAC30013258A /* AppDelegate.swift */; };
 		14977E402A68DAC30013258A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14977E3F2A68DAC30013258A /* SceneDelegate.swift */; };
 		14977E422A68DAC30013258A /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14977E412A68DAC30013258A /* DateViewController.swift */; };
@@ -26,6 +27,7 @@
 		145AD6EA2A6A10DE00A6DB3D /* AutoLayoutExample.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AutoLayoutExample.storyboard; sourceTree = "<group>"; };
 		145AD6EC2A6A4B1800A6DB3D /* NewWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordViewController.swift; sourceTree = "<group>"; };
 		145AD6EE2A6A8B2500A6DB3D /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		148621F42A6FB0B000926CCC /* NewlyCoinedWordsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewlyCoinedWordsEnum.swift; sourceTree = "<group>"; };
 		14977E3A2A68DAC30013258A /* NewlyCoinedWord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewlyCoinedWord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14977E3D2A68DAC30013258A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14977E3F2A68DAC30013258A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				145AD6EE2A6A8B2500A6DB3D /* UITextField+.swift */,
 				145AD6E52A6A0C3E00A6DB3D /* ExampleGroup */,
 				14977E412A68DAC30013258A /* DateViewController.swift */,
+				148621F42A6FB0B000926CCC /* NewlyCoinedWordsEnum.swift */,
 				14977E432A68DAC30013258A /* Main.storyboard */,
 				14977E462A68DAC50013258A /* Assets.xcassets */,
 				14977E482A68DAC50013258A /* LaunchScreen.storyboard */,
@@ -163,6 +166,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				148621F52A6FB0B000926CCC /* NewlyCoinedWordsEnum.swift in Sources */,
 				14977E422A68DAC30013258A /* DateViewController.swift in Sources */,
 				14977E3E2A68DAC30013258A /* AppDelegate.swift in Sources */,
 				145AD6ED2A6A4B1800A6DB3D /* NewWordViewController.swift in Sources */,
